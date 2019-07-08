@@ -1,1 +1,16 @@
-<h1><%= facade.total_foods %> results for <%= facade.query_params %></h1>
+<section class='header'>
+  <h1><%= facade.total_foods %> Results for <%= facade.query_params %></h1>
+  <h4>Displaying Top 10:</h4>
+</section>
+
+<section class='food-search-results'>
+  <% facade.foods(10).each do |food | %>
+    <div class="food">
+      <p>Name: <%= food.name %><p>
+      <p>Group: <%= food.group %><p>
+      <p>NDB Number: <%= food.ndb %><p>
+      <p>Data Source: <%= food.data_source %><p>
+      <p>Manufacturer: <%= food.manufacturer %></p>
+    </div>
+  <% end %>
+</section>
