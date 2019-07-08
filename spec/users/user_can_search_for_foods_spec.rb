@@ -4,14 +4,14 @@ RSpec.describe 'As a user' do
   describe 'when I visit the homepage' do
     describe "and fill in the search form with 'sweet potatoes' and click 'search'" do
       before :each do
-        visit root_path
+        visit '/'
 
-        fill_in :food, with: 'sweet potatoes'
+        fill_in :q, with: 'sweet potatoes'
         click_button 'Search'
       end
-      
+
       it "I'm taken to /foods" do
-        expect(current_path).to eq(foods_path)
+        expect(current_path).to eq('/foods')
       end
 
       # it 'I see 531 items returned for my search' do
