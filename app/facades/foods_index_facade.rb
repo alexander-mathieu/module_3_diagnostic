@@ -1,13 +1,15 @@
 class FoodsIndexFacade
+  attr_reader :query_params
+
   def initialize(query_params)
     @query_params = query_params
   end
 
-  def results
-    foods = datagov_service.foods_search
+  def foods
+    foods = datagov_service.foods_search[:list][:item]
 
     foods.map do |food_attributes|
-      Food.new(food_attributes)
+      Datagov::Food.new(food_attributes)
     end
   end
 
