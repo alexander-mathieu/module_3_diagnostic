@@ -5,7 +5,7 @@
 
 <section class='food-search-results'>
   <% facade.foods(10).each do |food | %>
-    <div class="food">
+    <div id="food-<%= food.ndb %>">
       <p>Name: <%= food.name %><p>
       <p>Group: <%= food.group %><p>
       <p>NDB Number: <%= food.ndb %><p>
