@@ -9,10 +9,10 @@ class FoodsIndexFacade
     datagov_service.foods_search[:list][:total]
   end
 
-  def foods
+  def foods(limit)
     foods = datagov_service.foods_search[:list][:item]
 
-    foods.map do |food_attributes|
+    foods[0..(limit)].map do |food_attributes|
       Datagov::Food.new(food_attributes)
     end
   end
