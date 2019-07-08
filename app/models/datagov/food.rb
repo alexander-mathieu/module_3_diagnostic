@@ -3,8 +3,8 @@ class Datagov::Food
               :name,
               :group,
               :data_source,
-              :manufacterer
-              
+              :manufacturer
+
   def initialize(attributes)
     @ndb = attributes[:ndbno]
     @name = attributes[:name]
