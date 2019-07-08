@@ -4,7 +4,7 @@ class DatagovService
   end
 
   def foods_search
-    parse_api_call('/ndb/search', { q: @query_params })
+    parse_api_call('/ndb/search', { api_key: ENV['DATA-GOV-API-KEY'], q: @query_params })
   end
 
   private
@@ -15,9 +15,6 @@ class DatagovService
   end
 
   def conn
-    Faraday.new(url: 'https://api.nal.usda.gov') do |f|
-      f.headers['api_key'] = ENV['DATA-GOV-API-KEY']
-      f.adapter Faraday.default_adapter
-    end
+    Faraday.new(url: 'https://api.nal.usda.gov')
   end
 end
