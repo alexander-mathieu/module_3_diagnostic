@@ -5,6 +5,10 @@ class FoodsIndexFacade
     @query_params = query_params
   end
 
+  def total_foods
+    datagov_service.foods_search[:list][:total]
+  end
+
   def foods
     foods = datagov_service.foods_search[:list][:item]
 
