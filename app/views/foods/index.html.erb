@@ -1,10 +1,10 @@
 <section class='header'>
   <h1><%= facade.total_foods %> Results for <%= facade.query_params %></h1>
-  <h4>Displaying Top 10:</h4>
+  <h4>Displaying Top <%= facade.total_results %>:</h4>
 </section>
 
 <section class='food-search-results'>
-  <% facade.foods(10).each do |food | %>
+  <% facade.foods.each do |food | %>
     <div id="food-<%= food.ndb %>">
       <p>Name: <%= food.name %><p>
       <p>Group: <%= food.group %><p>
