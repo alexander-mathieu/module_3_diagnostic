@@ -5,21 +5,27 @@ class FoodsIndexFacade
     @query_params = query_params
   end
 
-  def total_foods
-    datagov_service.foods_search[:list][:total]
+  def total_results
+    results[:end]
   end
 
-  def foods(limit)
-    foods = datagov_service.foods_search[:list][:item]
+  def total_foods
+    results[:total]
+  end
 
-    foods[0..(limit)].map do |food_attributes|
-      Datagov::Food.new(food_attributes)
+  def foods
+    results[:item].map do |food_attributes|
+      Food.new(food_attributes)
     end
   end
 
   private
 
+  def results
+    @_results ||= datagov_service.foods_search
+  end
+
   def datagov_service
-    DatagovService.new(@query_params)
+    @_datagov_service ||= DatagovService.new(@query_params)
   end
 end

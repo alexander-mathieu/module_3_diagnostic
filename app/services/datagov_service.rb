@@ -4,7 +4,9 @@ class DatagovService
   end
 
   def foods_search
-    parse_api_call('/ndb/search', { api_key: ENV['DATA-GOV-API-KEY'], q: @query_params })
+    parse_api_call('/ndb/search', { q: @query_params,
+                                    max: 10,
+                                    api_key: ENV['DATA-GOV-API-KEY'] })[:list]
   end
 
   private
