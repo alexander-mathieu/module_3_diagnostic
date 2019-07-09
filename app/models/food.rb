@@ -1,4 +1,4 @@
-class Datagov::Food
+class Food
   attr_reader :ndb,
               :name,
               :group,
